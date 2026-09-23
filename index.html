@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reglamento — Banquitas del Tejar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Saira+Condensed:wght@500;600;700;800&family=Saira:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --maroon:#8E2A39; --maroon-dk:#6E1F2C; --navy:#1B3A66; --navy-dk:#13284a;
+  --cream:#F1EADB; --paper:#FBF8F1; --ink:#211E1B; --muted:#7d756a;
+  --gold:#E0A024; --yellow:#F2C200; --blue:#2E6FD6; --red:#C0392B; --green:#2E8B57;
+  --line:#d9cfbd;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Saira',sans-serif; color:var(--ink); background:var(--cream);
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(142,42,57,.06), transparent 40%),
+    radial-gradient(circle at 88% 92%, rgba(27,58,102,.06), transparent 42%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  -webkit-font-smoothing:antialiased; padding-bottom:60px; line-height:1.55;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+
+/* HEADER */
+header{position:relative;overflow:hidden;background:var(--navy);color:var(--paper);border-bottom:6px solid var(--maroon)}
+header .wrap{position:relative;padding:30px 16px 26px}
+.kicker{font-family:'Saira Condensed';font-weight:700;letter-spacing:.32em;text-transform:uppercase;font-size:13px;color:var(--gold)}
+h1{font-family:'Anton';font-weight:400;font-size:clamp(38px,9vw,84px);line-height:.92;letter-spacing:.01em;text-transform:uppercase;margin:2px 0 0}
+h1 .b{color:var(--paper)} h1 .r{color:#E8B8BF}
+.subtitle{font-family:'Saira Condensed';font-weight:600;font-size:18px;color:#cdd7e6;margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
+.ball{position:absolute;right:-30px;top:-26px;width:220px;height:220px;opacity:.13}
+
+/* NAV */
+.controls{position:sticky;top:0;z-index:30;background:rgba(241,234,219,.96);backdrop-filter:blur(6px);border-bottom:2px solid var(--line)}
+.controls .wrap{display:flex;gap:4px;align-items:center;padding:6px 16px;overflow-x:auto;scrollbar-width:none}
+.controls .wrap::-webkit-scrollbar{display:none}
+.tabs{display:flex;gap:4px;margin:0 auto 0 0}
+.tabs a{font-family:'Saira Condensed';font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:.04em;
+  padding:8px 13px;color:var(--muted);text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap}
+.tabs a:hover{color:var(--navy)}
+.tabs a.active{color:var(--maroon);border-bottom-color:var(--maroon)}
+.tabs a.vet{color:var(--gold);font-weight:800}
+.tabs a.vet.active{color:var(--gold);border-bottom-color:var(--gold)}
+.print-btn{font-family:'Saira Condensed';font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;
+  padding:7px 14px;border:2px solid var(--maroon);background:#fff;color:var(--maroon);border-radius:999px;cursor:pointer;white-space:nowrap;margin-left:8px}
+.print-btn:hover{background:var(--maroon);color:#fff}
+
+main{padding-top:22px}
+section{scroll-margin-top:64px}
+.panel{background:var(--paper);border:2px solid var(--ink);border-radius:6px;box-shadow:7px 7px 0 rgba(27,58,102,.16);
+  margin-bottom:22px;overflow:hidden;animation:rise .5s cubic-bezier(.2,.7,.3,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.panel-h{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px;padding:14px 18px;border-bottom:2px solid var(--ink);background:var(--navy);color:#fff}
+.panel-h h2{font-family:'Anton';font-weight:400;font-size:24px;text-transform:uppercase;letter-spacing:.02em}
+.panel-h .tag{font-family:'Saira Condensed';font-weight:700;font-size:13px;color:var(--gold);text-transform:uppercase;letter-spacing:.1em}
+.panel-h.maroon{background:var(--maroon)}
+.panel-h.gold{background:var(--gold);color:var(--ink)}
+.panel-h.gold .tag{color:var(--navy-dk)}
+
+/* RESUMEN */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;padding:16px 18px}
+.stat{background:#fff;border:2px solid var(--line);border-top:5px solid var(--maroon);border-radius:6px;padding:12px 14px}
+.stat:nth-child(even){border-top-color:var(--navy)}
+.stat .num{font-family:'Anton';font-size:32px;line-height:1;color:var(--navy)}
+.stat .lbl{font-family:'Saira Condensed';font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-top:5px;line-height:1.25}
+
+/* INTRO */
+.intro{padding:18px 20px 6px}
+.intro h3{font-family:'Saira Condensed';font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--navy);font-size:20px;margin-bottom:8px}
+.intro p{font-size:15px;margin-bottom:12px;max-width:760px}
+
+/* ARTICLES */
+.art{display:grid;grid-template-columns:74px 1fr;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line);align-items:start}
+.art:last-child{border-bottom:0}
+.art:nth-child(even){background:rgba(27,58,102,.03)}
+.art .n{font-family:'Anton';font-size:26px;line-height:1;color:var(--maroon);text-align:center;
+  background:var(--cream);border:2px solid var(--line);border-radius:6px;padding:6px 4px 5px}
+.art .n small{display:block;font-family:'Saira Condensed';font-weight:800;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.art .t{font-size:15px}
+.art .t p+p,.art .t p+ul,.art .t ul+p{margin-top:8px}
+.art .t ul{padding-left:20px}
+.art .t li{margin:3px 0}
+.art .t strong{font-weight:700}
+.art.key{background:rgba(142,42,57,.07)!important;border-left:5px solid var(--maroon)}
+.art.key .n{background:var(--maroon);border-color:var(--maroon-dk);color:#fff}
+.art.key .n small{color:rgba(255,255,255,.75)}
+.art.key .t{font-weight:600;color:var(--maroon-dk)}
+.art.key .t .tagk{display:inline-block;font-family:'Saira Condensed';font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.08em;
+  background:var(--maroon);color:#fff;padding:2px 8px;border-radius:999px;margin-bottom:6px}
+
+/* CATEGORIA +40 */
+.vet-box{padding:22px 20px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;
+  background:linear-gradient(120deg,rgba(224,160,36,.20),rgba(224,160,36,.04));border-bottom:2px solid var(--line)}
+.vet-big{font-family:'Anton';font-size:64px;line-height:.9;color:var(--gold);text-shadow:2px 2px 0 rgba(27,58,102,.15);text-align:center}
+.vet-big small{display:block;font-family:'Saira Condensed';font-weight:800;font-size:13px;letter-spacing:.14em;color:var(--navy);text-shadow:none;margin-top:4px}
+.vet-box p{font-size:16px;font-weight:500}
+.vet-box p strong{color:var(--maroon)}
+.vet-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;padding:16px 18px}
+.vet-fact{background:#fff;border:2px solid var(--gold);border-left:7px solid var(--gold);border-radius:5px;padding:11px 14px}
+.vet-fact .k{font-family:'Anton';font-size:26px;color:var(--navy);line-height:1}
+.vet-fact .d{font-family:'Saira Condensed';font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:4px}
+
+/* CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;padding:14px 18px 18px}
+.tcard{background:#fff;border:2px solid var(--ink);border-radius:8px;overflow:hidden;box-shadow:4px 4px 0 rgba(27,58,102,.12)}
+.tcard .head{display:flex;align-items:center;gap:10px;padding:10px 14px;color:#fff;font-family:'Anton';font-size:20px;text-transform:uppercase;letter-spacing:.03em}
+.tcard .head .sw{width:16px;height:22px;border-radius:3px;background:rgba(255,255,255,.9);border:2px solid rgba(0,0,0,.25);flex-shrink:0}
+.tcard.y .head{background:var(--yellow);color:#4a3d00}
+.tcard.y2 .head{background:linear-gradient(90deg,var(--yellow) 50%,#e0a800 50%);color:#4a3d00}
+.tcard.b .head{background:var(--blue)}
+.tcard.r .head{background:var(--red)}
+.tcard .body{padding:12px 14px}
+.tcard .price{font-family:'Anton';font-size:26px;color:var(--maroon);line-height:1}
+.tcard .pen{font-family:'Saira Condensed';font-weight:700;font-size:15px;color:var(--navy);margin-top:6px}
+.note{margin:0 18px 16px;padding:12px 16px;background:rgba(142,42,57,.08);border-left:4px solid var(--maroon);border-radius:0 5px 5px 0;
+  font-size:14px;color:var(--maroon-dk);font-weight:600}
+
+/* TABLES */
+.tbl-scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:420px}
+thead th{font-family:'Saira Condensed';font-weight:700;text-transform:uppercase;font-size:13px;letter-spacing:.05em;color:#fff;background:var(--maroon);padding:9px 8px;text-align:center}
+thead th.l{text-align:left;padding-left:18px}
+tbody td{padding:9px 8px;text-align:center;border-bottom:1px solid var(--line);font-size:15px;font-weight:500}
+tbody td.l{text-align:left;padding-left:18px;font-family:'Saira Condensed';font-weight:700;font-size:16px}
+tbody tr:nth-child(even){background:rgba(27,58,102,.04)}
+.fechas{font-family:'Saira Condensed';font-weight:800;font-size:17px;color:var(--navy);white-space:nowrap}
+.fechas.hi{color:var(--maroon)}
+tr.expel{background:repeating-linear-gradient(45deg,rgba(142,42,57,.10),rgba(142,42,57,.10) 8px,rgba(142,42,57,.04) 8px,rgba(142,42,57,.04) 16px)!important}
+.sub-h{font-family:'Saira Condensed';font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--maroon);font-size:14px;
+  margin:0;padding:14px 18px 8px;border-top:2px solid var(--ink);border-bottom:2px dotted var(--line);background:var(--paper)}
+
+/* LISTA PIERDE */
+.lose-list{list-style:none;padding:4px 0}
+.lose-list li{padding:11px 18px 11px 46px;border-bottom:1px solid var(--line);position:relative;font-size:15px}
+.lose-list li:last-child{border-bottom:0}
+.lose-list li::before{content:'W.O.';position:absolute;left:12px;top:12px;font-family:'Saira Condensed';font-weight:800;font-size:10px;
+  background:#eadfc4;color:#7a5d12;border-radius:4px;padding:2px 4px;letter-spacing:.04em}
+
+/* FIRMAS */
+.sign{display:flex;justify-content:center;padding:36px 18px 28px}
+.sign .box{text-align:center;min-width:260px}
+.sign .line{border-top:2px solid var(--ink);margin-bottom:8px}
+.sign .who{font-family:'Saira Condensed';font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);font-size:16px}
+.sign .role{font-family:'Saira Condensed';font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.closing{text-align:center;font-family:'Anton';font-size:22px;letter-spacing:.04em;text-transform:uppercase;color:var(--maroon);padding:18px 18px 0}
+
+footer{text-align:center;font-family:'Saira Condensed';color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.1em;padding:10px}
+
+@media(max-width:600px){
+  .art{grid-template-columns:52px 1fr;gap:10px;padding:12px 12px}
+  .art .n{font-size:20px}
+  .vet-box{grid-template-columns:1fr;text-align:center}
+  .panel-h h2{font-size:21px}
+  .ball{width:150px;height:150px}
+}
+@media print{
+  .controls,.ball,.print-btn{display:none}
+  body{background:#fff;padding:0}
+  .panel{box-shadow:none;break-inside:auto;animation:none}
+  .art{break-inside:avoid}
+  header,.panel-h,thead th,.art.key .n,.tcard .head{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <svg class="ball" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="none" stroke="#fff" stroke-width="3"/><path d="M50 14 L70 30 L62 56 L38 56 L30 30Z" fill="#fff"/><path d="M50 86 L30 72 M50 86 L70 72 M14 44 L30 56 M86 44 L70 56" stroke="#fff" stroke-width="3" fill="none"/></svg>
+    <div class="kicker">Reglamento Disciplinario · 2026</div>
+    <h1><span class="r">BANQUITAS</span> <span class="b">DEL TEJAR</span></h1>
+    <div class="subtitle">Torneo de banquitas limpias · Barrio El Tejar</div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="wrap">
+    <nav class="tabs" id="tabs">
+      <a href="#resumen" class="active">Resumen</a>
+      <a href="#generales">Generales</a>
+      <a href="#veteranos" class="vet">Categoría +40 ★</a>
+      <a href="#disciplina">Disciplina</a>
+      <a href="#sanciones">Sanciones</a>
+      <a href="#perdida">Partido perdido</a>
+      <a href="#cierre">Cierre</a>
+    </nav>
+    <button class="print-btn" onclick="window.print()">Imprimir</button>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- RESUMEN -->
+  <section id="resumen">
+    <div class="panel">
+      <div class="panel-h"><h2>Lo esencial</h2><span class="tag">Datos clave del torneo</span></div>
+      <div class="stats">
+        <div class="stat"><div class="num">40'</div><div class="lbl">2 tiempos de 20 min, descanso de 5</div></div>
+        <div class="stat"><div class="num">10'</div><div class="lbl">de espera después de la hora programada</div></div>
+        <div class="stat"><div class="num">4</div><div class="lbl">jugadores mínimo para iniciar un partido</div></div>
+        <div class="stat"><div class="num">24 h</div><div class="lbl">para presentar demanda o apelación</div></div>
+        <div class="stat"><div class="num">2 W</div><div class="lbl">y el equipo queda fuera en primera ronda</div></div>
+        <div class="stat"><div class="num">4 goles</div><div class="lbl">de diferencia y el árbitro finaliza el partido</div></div>
+      </div>
+      <div class="intro">
+        <h3>Señores dirigentes</h3>
+        <p>Cordial saludo.</p>
+        <p>La organización del torneo hace llegar a ustedes el agradecimiento por la confianza depositada en nosotros.</p>
+        <p>Esperamos toda su colaboración para llevar a feliz término este evento deportivo de campeonato de banquitas y/o microfútbol, futsal, mini fútbol, futsal 2026.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GENERALES -->
+  <section id="generales">
+    <div class="panel">
+      <div class="panel-h"><h2>Disposiciones generales</h2><span class="tag">Artículos 1 al 16</span></div>
+
+      <div class="art"><div class="n"><small>Art.</small>1º</div><div class="t">Una vez iniciado el campeonato por ningún motivo se hará devolución de dinero.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>2º</div><div class="t">Para la tercera fecha deberán estar a paz y salvo con la organización, tener sus respectivos carnets laminados y estar todos debidamente uniformados, en caso contrario perderá por W.O.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>3º</div><div class="t">Toda demanda o apelación debe ser acompañada por una carta debidamente diligenciada, para lo cual contarán con 24 horas contadas a partir de la programación del encuentro, la cual será estudiada por el comité.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>4º</div><div class="t">Todo equipo participante se compromete a estar a paz y salvo con el arbitraje una hora antes de su respectivo partido, y deberá cancelarlo en la sede de la organización.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>5º</div><div class="t">Los carnets retenidos por tarjetas serán entregados antes de cada partido en la sede de la organización.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>6º</div><div class="t">Los delegados de cada equipo están en la obligación de asistir a las reuniones o cualquier citación que el comité comunique con la debida anticipación. El incumplimiento de estas normas acarreará al equipo una multa económica y tendrá que aceptar las decisiones tomadas en dicha reunión.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>7º</div><div class="t">Toda petición a la organización deberá ser presentada por escrito, firmada y sellada.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>8º</div><div class="t">Una vez estudiados los casos que se presenten a la organización, el fallo que esta prefiera será definitivo.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>9º</div><div class="t">En caso de que el marcador diferencia de seis (6) goles en futsal, y cuatro (4) en banquitas, el árbitro dará por finalizado el partido.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>10º</div><div class="t">El equipo que pierda dos (2) partidos por W en forma consecutiva o acumulativa en la primera ronda quedará <strong>AUTOMÁTICAMENTE</strong> fuera del campeonato. En semifinales y finales será en un (1) solo W.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>11º</div><div class="t">Los partidos se jugarán entre semana y fin de semana.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>12º</div><div class="t">El tiempo reglamentario es de 40 minutos de juego, divididos en dos (2) tiempos de 20 minutos cada uno, con un descanso de cinco (5) minutos.</div></div>
+      <div class="art key"><div class="n"><small>Art.</small>13º</div><div class="t">Los jugadores actúan bajo su cuenta y riesgo en su condición física, daños a personas, enseres propios o extraños.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>14º</div><div class="t">La actuación de un jugador sancionado en un partido oficial dará lugar a la pérdida de los puntos al equipo al cual pertenece.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>15º</div><div class="t">
+        <p>La organización queda facultada para resolver casos no contemplados en este código o para adiciones que pasarán a ser parte del mismo.</p>
+        <p>De acuerdo con la comisión disciplinaria del torneo, la organización está facultada para reservar el derecho de admitir a equipos y/o jugadores reincidentes con antecedentes antideportivos con jugadores, jueces y miembros del comité organizador.</p>
+      </div></div>
+      <div class="art"><div class="n"><small>Art.</small>16º</div><div class="t">El informe del veedor será tenido en cuenta por la organización.</div></div>
+    </div>
+  </section>
+
+  <!-- CATEGORIA +40 -->
+  <section id="veteranos">
+    <div class="panel">
+      <div class="panel-h gold"><h2>Categoría +40 · Veteranos</h2><span class="tag">Artículo 17</span></div>
+      <div class="vet-box">
+        <div class="vet-big">+40<small>Veteranos</small></div>
+        <p><strong>Artículo 17º.</strong> Para la categoría +40 (veteranos), cada equipo puede inscribir en planilla hasta <strong>dos (2) jugadores menores de 36 años</strong>, pero debe participar uno de ellos en el juego.</p>
+      </div>
+      <div class="vet-facts">
+        <div class="vet-fact"><div class="k">2</div><div class="d">jugadores menores de 36 años permitidos en planilla</div></div>
+        <div class="vet-fact"><div class="k">&lt; 36</div><div class="d">edad de los jugadores que aplican a esta excepción</div></div>
+        <div class="vet-fact"><div class="k">1</div><div class="d">de ellos debe participar en el juego</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCIPLINA -->
+  <section id="disciplina">
+    <div class="panel">
+      <div class="panel-h maroon"><h2>Parte disciplinaria</h2><span class="tag">Artículos 18 al 30</span></div>
+
+      <div class="art"><div class="n"><small>Art.</small>18º</div><div class="t">
+        <p>Con el fin de imponer el juego limpio las tarjetas se cobrarán así:</p>
+      </div></div>
+
+      <div class="cards">
+        <div class="tcard y"><div class="head"><span class="sw"></span>Amarilla</div><div class="body"><div class="price">$ 6.000</div><div class="pen">Por cada tarjeta</div></div></div>
+        <div class="tcard y2"><div class="head"><span class="sw"></span>2 amarillas</div><div class="body"><div class="price">+ valor de las mismas</div><div class="pen">Una (1) fecha de sanción</div></div></div>
+        <div class="tcard b"><div class="head"><span class="sw"></span>Azul</div><div class="body"><div class="price">$ 8.000</div><div class="pen">Si es directa, una (1) fecha de sanción</div></div></div>
+        <div class="tcard r"><div class="head"><span class="sw"></span>Roja</div><div class="body"><div class="price">$ 10.000</div><div class="pen">2 fechas mínimo, según informe arbitral</div></div></div>
+      </div>
+      <div class="note">Toda agresión que derive en proceso legal o reporte a la liga arbitral se sancionará con la expulsión del jugador del torneo.</div>
+
+      <div class="art"><div class="n"><small>Art.</small>19º</div><div class="t">Para los partidos cada equipo deberá tener un balón reglamentario. El equipo que no presente será multado con la suma de <strong>$5.000</strong>, los cuales deberán ser cancelados antes de la iniciación del partido.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>20º</div><div class="t">El equipo que pierda por W después de la primera ronda no tendrá derecho a disputar la valla menos vencida.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>21º</div><div class="t">Ningún partido podrá iniciarse con menos de cuatro (4) jugadores por equipo. Si iniciando el juego uno o ambos equipos quedaran con menos de este número de jugadores, el árbitro dará por terminado el partido por inferioridad numérica y/o sustracción de materia.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>22º</div><div class="t">El árbitro está en la obligación de conceder a los equipos diez (10) minutos de espera después de la hora programada.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>23º</div><div class="t">En caso de presentarse problemas en el campo de juego contra la voluntad del juez u otro caso de fuerza mayor, teniendo en cuenta que se haya jugado el 75% del partido el árbitro finalizará el encuentro y el marcador quedará tal y como se registre hasta ese momento, de acuerdo al informe arbitral.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>24º</div><div class="t">El capitán del equipo está en la obligación de asistir al árbitro cuando cualquiera de ellos lo solicite, dando nombres y apellidos de los jugadores que cometan infracciones.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>25º</div><div class="t">Todo equipo es responsable de cualquier acción antideportiva de sus parciales o barras, jugadores, suplentes y dirigentes y como tal se hace responsable el acreedor de las sanciones que según la gravedad de la falta corresponda.</div></div>
+      <div class="art key"><div class="n"><small>Art.</small>26º</div><div class="t"><span class="tagk">Expulsión del equipo</span><br>Cualquier jugador o integrante del equipo que fomente actos de indisciplina tales como agresión física a los jueces u organizadores, a contrarios, a las barras o propicie batalla campal, el equipo quedará automáticamente por fuera del campeonato y perderá cualquier derecho a premiación a que haya lugar, además de someterse a una demanda penal, de acuerdo con los daños causados.</div></div>
+      <div class="art key"><div class="n"><small>Art.</small>27º</div><div class="t"><span class="tagk">Batalla campal</span><br>Para la comisión disciplinaria, batalla campal es la agresión física de hecho entre más de dos (2) jugadores por equipo o integrantes de los parciales (barras) del mismo, durante el desarrollo del juego, por lo cual al presentarse agresión física en número menor de jugadores anteriormente estipulado se deben expulsar del torneo los jugadores implicados en el hecho.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>28º</div><div class="t">Todo jugador sin excepción, al que el árbitro note en estado de embriaguez, por ningún motivo podrá jugar y se tendrá en cuenta cualquier ofensa verbal o agresiva.</div></div>
+      <div class="art key"><div class="n"><small>Art.</small>29º</div><div class="t"><span class="tagk">Doble expulsión</span><br>El jugador que durante el campeonato sea expulsado en dos ocasiones diferentes quedará automáticamente expulsado del campeonato.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>30º</div><div class="t">Sanciones. De acuerdo a la gravedad de la falta, se sancionará de la siguiente manera (ver tabla).</div></div>
+    </div>
+  </section>
+
+  <!-- SANCIONES -->
+  <section id="sanciones">
+    <div class="panel">
+      <div class="panel-h"><h2>Tabla de sanciones</h2><span class="tag">Artículo 30</span></div>
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th class="l">Falta</th><th>Sanción</th></tr></thead>
+          <tbody>
+            <tr><td class="l">Juego brusco</td><td class="fechas">2 fechas</td></tr>
+            <tr><td class="l">Juego peligroso</td><td class="fechas">3 fechas</td></tr>
+            <tr><td class="l">Juego peligroso y mal intencionado</td><td class="fechas">4 fechas</td></tr>
+            <tr><td class="l">Juego peligroso y mal intencionado con lesión</td><td class="fechas hi">10 fechas</td></tr>
+            <tr><td class="l">Expulsión con mínimo detalle o tarjeta azul</td><td class="fechas">1 fecha</td></tr>
+            <tr><td class="l">Expulsión por protestar fallos arbitrales</td><td class="fechas">2 fechas</td></tr>
+            <tr><td class="l">Agresión verbal al árbitro</td><td class="fechas hi">8 fechas</td></tr>
+            <tr><td class="l">Agresión a un jugador del equipo contrario</td><td class="fechas">3 fechas</td></tr>
+            <tr><td class="l">Agresión a un dirigente o delegado del equipo contrario</td><td class="fechas">4 fechas</td></tr>
+            <tr><td class="l">Agresión al público</td><td class="fechas">4 fechas</td></tr>
+            <tr class="expel"><td class="l">Agresión al comité organizador · expulsión del torneo</td><td class="fechas hi">8 fechas</td></tr>
+            <tr><td class="l">Intento de agresión a un jugador del equipo contrario</td><td class="fechas">4 fechas</td></tr>
+            <tr><td class="l">Intento de agresión al delegado del equipo contrario</td><td class="fechas">5 fechas</td></tr>
+            <tr><td class="l">Intento de agresión al árbitro</td><td class="fechas hi">15 fechas</td></tr>
+            <tr><td class="l">Intento de agresión a un miembro del comité organizador</td><td class="fechas hi">15 fechas</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub-h">Agresión de hecho</h3>
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th class="l">Caso</th><th>Sanción</th></tr></thead>
+          <tbody>
+            <tr><td class="l">Mutua</td><td class="fechas">6 fechas más informe arbitral</td></tr>
+            <tr class="expel"><td class="l">Al árbitro</td><td class="fechas hi">Vetado 5 años · el equipo queda expulsado del campeonato</td></tr>
+            <tr><td class="l">Al jugador del equipo contrario</td><td class="fechas">8 fechas más informe arbitral</td></tr>
+            <tr class="expel"><td class="l">A algún miembro del comité organizador</td><td class="fechas hi">Vetado 5 años</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTIDO PERDIDO -->
+  <section id="perdida">
+    <div class="panel">
+      <div class="panel-h"><h2>Partido perdido y otras normas</h2><span class="tag">Artículos 31 al 38</span></div>
+
+      <div class="art"><div class="n"><small>Art.</small>31º</div><div class="t">La premiación se entregará en efectivo y se llevará a cabo en la cancha el mismo día de finalizado el torneo.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>32º</div><div class="t">El equipo que comience con cuatro (4) jugadores podrá completar su nómina en cualquier momento del juego, siempre y cuando esté inscrito en el acta del juego desde el comienzo.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>33º</div><div class="t">Se declara partido perdido sin importar el marcador para el equipo que incurra en las siguientes infracciones:</div></div>
+      <ul class="lose-list">
+        <li>Abandono de la cancha antes que el árbitro dé por terminado el encuentro.</li>
+        <li>Actuación de un jugador inscrito <strong>(SUPLANTADO).</strong></li>
+        <li>Cuando en el transcurso del partido el equipo quede en inferioridad numérica de tres (3) jugadores, así su marcador se encuentre a favor.</li>
+        <li>Por agresión de hecho a los jueces o algún miembro del comité organizador.</li>
+        <li>Por la no presentación de carnets debidamente diligenciados si la organización o el equipo rival lo exige.</li>
+      </ul>
+      <div class="art"><div class="n"><small>Art.</small>34º</div><div class="t">Cuando un partido sea suspendido la organización del torneo estudiará los motivos que originen dicha suspensión.</div></div>
+      <div class="art key"><div class="n"><small>Art.</small>35º</div><div class="t"><span class="tagk">Multa $30.000</span><br>El capitán, delegado o integrante del equipo que porte o consuma bebidas embriagantes y/o sustancias alucinógenas dentro del perímetro del parque en que se desarrolla el torneo, <u>NO SE DEJARÁ PARTICIPAR DEL ENCUENTRO</u>, automáticamente será sancionado dos (2) fechas y deberá pagar una multa de treinta mil pesos ($30.000).</div></div>
+      <div class="art"><div class="n"><small>Art.</small>36º</div><div class="t">La sanción de la tarjeta roja quedará a cargo del tribunal disciplinario quien se encargará de juzgar dependiendo del informe arbitral.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>37º</div><div class="t">El jugador que suplante a otro en una falta (levantando el brazo) automáticamente será expulsado del partido.</div></div>
+      <div class="art"><div class="n"><small>Art.</small>38º</div><div class="t">Todo evento deportivo que organice el comité debe ser de estricto cumplimiento por todos los jugadores y participantes.</div></div>
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section id="cierre">
+    <div class="panel">
+      <div class="panel-h"><h2>Disposición final</h2><span class="tag">Artículo 39</span></div>
+      <div class="art"><div class="n"><small>Art.</small>39º</div><div class="t">Comuníquese y cúmplase.</div></div>
+      <div class="sign">
+        <div class="box">
+          <div class="line"></div>
+          <div class="who">Comité Organizador</div>
+          <div class="role">Banquitas del Tejar</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>Banquitas del Tejar · Reglamento disciplinario 2026</footer>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('#tabs a'));
+  var map={};
+  links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}).filter(Boolean);
+  function setActive(id){
+    links.forEach(function(a){a.classList.remove('active');});
+    if(map[id]){
+      map[id].classList.add('active');
+      var bar=map[id].parentNode.parentNode;
+      var l=map[id].offsetLeft-bar.clientWidth/2+map[id].clientWidth/2;
+      if(bar.scrollTo)bar.scrollTo({left:l,behavior:'smooth'});
+    }
+  }
+  function onScroll(){
+    var y=window.scrollY+120, cur=secs[0].id;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id;});
+    if(window.innerHeight+window.scrollY>=document.body.scrollHeight-4)cur=secs[secs.length-1].id;
+    setActive(cur);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
